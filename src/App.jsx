@@ -22,6 +22,13 @@ export const App = () => {
       setTodos([...todos, todo]);
       setComment('');
   };
+
+  const onClickDelete = (index) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1)
+    setTodos(newTodos);
+    setTodos(newTodos.map((todos, index) => ({...todos, id: index + 1})));
+  };
   
   return (
     <>
@@ -53,8 +60,8 @@ export const App = () => {
 
         < TaskList
          todos={todos}
+         onClickDelete={onClickDelete}
         />
-
       </table>
 
       <TaskInput 
